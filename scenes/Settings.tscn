@@ -1,0 +1,267 @@
+[gd_scene load_steps=9 format=3 uid="uid://ymqeuxn7vhpp"]
+
+[ext_resource type="Script" path="res://scripts/Settings.gd" id="1_fx08m"]
+[ext_resource type="PackedScene" uid="uid://6q71hhhis5j0" path="res://scenes/Button.tscn" id="2_43u5r"]
+[ext_resource type="PackedScene" uid="uid://73ukhg7sglhp" path="res://scenes/CheckBox.tscn" id="3_uqewx"]
+[ext_resource type="PackedScene" uid="uid://h1f14t7nmn5e" path="res://scenes/Label.tscn" id="3_vd01e"]
+[ext_resource type="PackedScene" uid="uid://wt8wjpkiyfel" path="res://scenes/VSlider.tscn" id="5_1f1c1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxx5e"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjpfa"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.12549, 0.133333, 0.14902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.176471, 0.188235, 0.211765, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ncuw8"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fx08m")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qxx5e")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="SaveButton" parent="." instance=ExtResource("2_43u5r")]
+layout_mode = 1
+anchor_left = 0.298222
+anchor_top = 1.0
+anchor_right = 0.471222
+anchor_bottom = 1.0
+offset_left = 0.447998
+offset_top = -56.0
+offset_right = 0.151978
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Save"
+button_up_func = false
+change_scene = true
+
+[node name="CancelButton" parent="." instance=ExtResource("2_43u5r")]
+layout_mode = 1
+anchor_left = 0.527389
+anchor_top = 1.0
+anchor_right = 0.700389
+anchor_bottom = 1.0
+offset_left = 0.447998
+offset_top = -56.0
+offset_right = 0.151978
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cancel"
+button_up_func = false
+change_scene = true
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.123
+anchor_right = 1.0
+anchor_bottom = 0.889
+offset_left = 16.0
+offset_top = 0.295998
+offset_right = -16.0
+offset_bottom = -0.0720215
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 1
+
+[node name="AudioTitle" type="Label" parent="Scroll/Container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.909804, 0.909804, 1)
+theme_override_font_sizes/font_size = 25
+text = "    Audio Settings"
+vertical_alignment = 1
+
+[node name="AudioSeparator" type="HSeparator" parent="Scroll/Container"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Master" type="PanelContainer" parent="Scroll/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wjpfa")
+
+[node name="HBox" type="HBoxContainer" parent="Scroll/Container/Master"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" parent="Scroll/Container/Master/HBox" instance=ExtResource("3_vd01e")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mute" parent="Scroll/Container/Master/HBox" instance=ExtResource("3_uqewx")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mute"
+
+[node name="VolumeLabel" parent="Scroll/Container/Master/HBox" instance=ExtResource("3_vd01e")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Volume : 0 db"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Scroll/Container/Master/HBox" instance=ExtResource("5_1f1c1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_icons/tick = SubResource("CompressedTexture2D_ncuw8")
+min_value = -80.0
+max_value = 6.0
+scrollable = false
+tick_count = 86
+ticks_on_borders = true
+
+[node name="UI" type="PanelContainer" parent="Scroll/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wjpfa")
+
+[node name="HBox" type="HBoxContainer" parent="Scroll/Container/UI"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" parent="Scroll/Container/UI/HBox" instance=ExtResource("3_vd01e")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "UI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mute" parent="Scroll/Container/UI/HBox" instance=ExtResource("3_uqewx")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mute"
+
+[node name="VolumeLabel" parent="Scroll/Container/UI/HBox" instance=ExtResource("3_vd01e")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Volume : 0 db"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Scroll/Container/UI/HBox" instance=ExtResource("5_1f1c1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_icons/tick = SubResource("CompressedTexture2D_ncuw8")
+min_value = -80.0
+max_value = 6.0
+scrollable = false
+tick_count = 86
+ticks_on_borders = true
+
+[node name="UI_SFX" type="PanelContainer" parent="Scroll/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wjpfa")
+
+[node name="HBox" type="HBoxContainer" parent="Scroll/Container/UI_SFX"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" parent="Scroll/Container/UI_SFX/HBox" instance=ExtResource("3_vd01e")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "UI sfx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mute" parent="Scroll/Container/UI_SFX/HBox" instance=ExtResource("3_uqewx")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mute"
+
+[node name="VolumeLabel" parent="Scroll/Container/UI_SFX/HBox" instance=ExtResource("3_vd01e")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Volume : 0 db"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Scroll/Container/UI_SFX/HBox" instance=ExtResource("5_1f1c1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_icons/tick = SubResource("CompressedTexture2D_ncuw8")
+min_value = -80.0
+max_value = 6.0
+scrollable = false
+tick_count = 86
+ticks_on_borders = true
+
+[connection signal="activated" from="SaveButton" to="." method="_on_save_button_activated"]
+[connection signal="activated" from="CancelButton" to="." method="_on_cancel_button_activated"]
+[connection signal="activated" from="Scroll/Container/Master/HBox/Mute" to="." method="_on_audio_master_mute_activated"]
+[connection signal="value_changed" from="Scroll/Container/Master/HBox/VolumeSlider" to="." method="_on_audio_master_volume_slider_value_changed"]
+[connection signal="activated" from="Scroll/Container/UI/HBox/Mute" to="." method="_on_audio_ui_mute_activated"]
+[connection signal="value_changed" from="Scroll/Container/UI/HBox/VolumeSlider" to="." method="_on_audio_ui_volume_slider_value_changed"]
+[connection signal="activated" from="Scroll/Container/UI_SFX/HBox/Mute" to="." method="_on_audio_ui_sfx_mute_activated"]
+[connection signal="value_changed" from="Scroll/Container/UI_SFX/HBox/VolumeSlider" to="." method="_on_audio_ui_sfx_volume_slider_value_changed"]

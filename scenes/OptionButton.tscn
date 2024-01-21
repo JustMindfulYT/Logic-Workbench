@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0xc0xnfy78b"]
+
+[ext_resource type="Script" path="res://scripts/OptionButton.gd" id="1_qakor"]
+[ext_resource type="AudioStream" uid="uid://oh6210hyekg8" path="res://addons/kenney_ui_audio/mouserelease1.wav" id="2_8e5vo"]
+[ext_resource type="AudioStream" uid="uid://b0rgq1w8gb725" path="res://addons/kenney_ui_audio/mouseclick1.wav" id="3_fhf6d"]
+[ext_resource type="AudioStream" uid="uid://bjx5qvukwusby" path="res://addons/kenney_ui_audio/click2.wav" id="4_t1dwk"]
+[ext_resource type="AudioStream" uid="uid://cx07cvhwyffaa" path="res://addons/kenney_ui_audio/rollover2.wav" id="5_3v834"]
+
+[node name="OptionButton" type="OptionButton"]
+anchors_preset = -1
+anchor_right = 0.222
+anchor_bottom = 0.099
+offset_right = 0.255981
+offset_bottom = -0.152008
+script = ExtResource("1_qakor")
+
+[node name="HoverIn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_8e5vo")
+bus = &"UI sfx"
+
+[node name="HoverOut" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fhf6d")
+bus = &"UI sfx"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_t1dwk")
+bus = &"UI sfx"
+
+[node name="Release" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_3v834")
+bus = &"UI sfx"
+
+[connection signal="button_down" from="." to="." method="_on_option_button_button_down"]
+[connection signal="item_selected" from="." to="." method="_on_option_button_item_selected"]
+[connection signal="mouse_entered" from="." to="." method="_on_option_button_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_option_button_mouse_exited"]

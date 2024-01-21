@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://73ukhg7sglhp"]
+
+[ext_resource type="AudioStream" uid="uid://oh6210hyekg8" path="res://addons/kenney_ui_audio/mouserelease1.wav" id="1_hl2f3"]
+[ext_resource type="Script" path="res://scripts/CheckBox.gd" id="1_rufdp"]
+[ext_resource type="AudioStream" uid="uid://b0rgq1w8gb725" path="res://addons/kenney_ui_audio/mouseclick1.wav" id="2_3s0wj"]
+[ext_resource type="AudioStream" uid="uid://bjx5qvukwusby" path="res://addons/kenney_ui_audio/click2.wav" id="3_rvoyx"]
+[ext_resource type="AudioStream" uid="uid://cx07cvhwyffaa" path="res://addons/kenney_ui_audio/rollover2.wav" id="4_5kje6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yo7ed"]
+bg_color = Color(0.129412, 0.14902, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.211765, 0.239216, 0.290196, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rups3"]
+bg_color = Color(0.2304, 0.264747, 0.32, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3139, 0.35647, 0.43, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p2tk"]
+bg_color = Color(0.11, 0.11, 0.11, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.22, 0.22, 0.22, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qook"]
+bg_color = Color(0.18, 0.206833, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2628, 0.29682, 0.36, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qthky"]
+bg_color = Color(0.18, 0.206833, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2628, 0.29682, 0.36, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4cax"]
+
+[node name="CheckBox" type="CheckBox"]
+anchors_preset = -1
+anchor_right = 0.111
+anchor_bottom = 0.099
+offset_right = 0.127991
+offset_bottom = -0.152008
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_yo7ed")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rups3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1p2tk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4qook")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qthky")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i4cax")
+script = ExtResource("1_rufdp")
+
+[node name="HoverIn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_hl2f3")
+bus = &"UI sfx"
+
+[node name="HoverOut" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_3s0wj")
+bus = &"UI sfx"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rvoyx")
+bus = &"UI sfx"
+
+[node name="Release" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5kje6")
+bus = &"UI sfx"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

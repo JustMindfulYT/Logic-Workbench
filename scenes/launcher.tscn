@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://bifv3t1wajf52"]
+
+[ext_resource type="Script" path="res://scripts/launcher.gd" id="1_amoxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1ais"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdx0h"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.180392, 0.129412, 0.129412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Launcher" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_amoxx")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x1ais")
+
+[node name="TopContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 104.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="TopContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Digital Logic Simulator 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="TopContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "A Logic Simulator made by Lime Inc"
+horizontal_alignment = 1
+
+[node name="Progress" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -20.0
+offset_right = -32.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+
+[node name="ErrorDialog" type="AcceptDialog" parent="."]
+title = "Fatal Error Occured :"
+initial_position = 2
+size = Vector2i(300, 200)
+borderless = true
+always_on_top = true
+transparent = true
+popup_window = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_mdx0h")
+ok_button_text = "Open last Scene"
+dialog_hide_on_ok = false
+dialog_close_on_escape = false
+
+[connection signal="confirmed" from="ErrorDialog" to="." method="_on_error_dialog_confirmed"]

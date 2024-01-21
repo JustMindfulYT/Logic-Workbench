@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgtg3jv5gbjgs"]
+
+[ext_resource type="Script" path="res://scripts/classes/NOT.gd" id="1_ihhgv"]
+[ext_resource type="Script" path="res://scripts/classes/slot.gd" id="2_0x5f6"]
+
+[node name="Not" type="GraphNode"]
+custom_minimum_size = Vector2(128, 56)
+offset_right = 128.0
+offset_bottom = 56.0
+theme_override_constants/separation = 15
+theme_override_constants/port_h_offset = 0
+title = "NOT"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_ihhgv")
+
+[node name="Slot" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("2_0x5f6")
+id = 0
+input_enabled = true
+output_enabled = true
+output_state = true

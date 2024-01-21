@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0o8mjjn7ohh2"]
+
+[ext_resource type="Script" path="res://scripts/VSlider.gd" id="1_1rrif"]
+[ext_resource type="AudioStream" uid="uid://oh6210hyekg8" path="res://addons/kenney_ui_audio/mouserelease1.wav" id="2_w5p3t"]
+[ext_resource type="AudioStream" uid="uid://b0rgq1w8gb725" path="res://addons/kenney_ui_audio/mouseclick1.wav" id="3_y3nak"]
+[ext_resource type="AudioStream" uid="uid://bjx5qvukwusby" path="res://addons/kenney_ui_audio/click2.wav" id="4_vg7gs"]
+[ext_resource type="AudioStream" uid="uid://cx07cvhwyffaa" path="res://addons/kenney_ui_audio/rollover2.wav" id="5_f6xfj"]
+
+[node name="HSlider" type="VSlider"]
+anchors_preset = -1
+anchor_right = 0.0555556
+anchor_bottom = 0.395062
+script = ExtResource("1_1rrif")
+metadata/_edit_use_anchors_ = true
+
+[node name="HoverIn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_w5p3t")
+bus = &"UI sfx"
+
+[node name="HoverOut" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_y3nak")
+bus = &"UI sfx"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vg7gs")
+bus = &"UI sfx"
+
+[node name="Release" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_f6xfj")
+bus = &"UI sfx"
+
+[connection signal="drag_ended" from="." to="." method="_on_drag_ended"]
+[connection signal="drag_started" from="." to="." method="_on_drag_started"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

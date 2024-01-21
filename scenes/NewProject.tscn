@@ -1,0 +1,209 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnptiykwe861w"]
+
+[ext_resource type="PackedScene" uid="uid://c0xc0xnfy78b" path="res://scenes/OptionButton.tscn" id="1_hfo7p"]
+[ext_resource type="Script" path="res://scripts/NewProject.gd" id="1_u5jsg"]
+[ext_resource type="PackedScene" uid="uid://wt8wjpkiyfel" path="res://scenes/VSlider.tscn" id="3_xfn4l"]
+[ext_resource type="PackedScene" uid="uid://6q71hhhis5j0" path="res://scenes/Button.tscn" id="4_ocgwu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsc2y"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o43qy"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u5jsg")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nsc2y")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.099
+offset_bottom = -0.152008
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Unnamed Project"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Data" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.278
+anchor_right = 0.722
+offset_left = -0.256042
+offset_top = 128.0
+offset_right = 0.25592
+offset_bottom = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Labels" type="VBoxContainer" parent="Data"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Name" type="Label" parent="Data/Labels"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Project Name"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Mode" type="Label" parent="Data/Labels"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Project Mode"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StarterCash" type="Label" parent="Data/Labels"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Cash ( 100 )"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Inputs" type="VBoxContainer" parent="Data"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Name" type="LineEdit" parent="Data/Inputs"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="OptionButton" parent="Data/Inputs" instance=ExtResource("1_hfo7p")]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Carreer"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "Sandbox"
+popup/item_1/id = 1
+popup/item_2/text = "Custom"
+popup/item_2/id = 2
+popup/item_2/disabled = true
+
+[node name="StarterCash" parent="Data/Inputs" instance=ExtResource("3_xfn4l")]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_icons/tick = SubResource("CompressedTexture2D_o43qy")
+max_value = 10.0
+
+[node name="Hint" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277778
+anchor_top = 0.444444
+anchor_right = 0.722222
+anchor_bottom = 0.78858
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NameEmpty" type="Label" parent="Hint"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "You must enter a name"
+vertical_alignment = 1
+
+[node name="NameDuplicate" type="Label" parent="Hint"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "You must not enter the name of an existing project"
+vertical_alignment = 1
+
+[node name="ModeEmpty" type="Label" parent="Hint"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "You must select a project mode"
+vertical_alignment = 1
+
+[node name="CashLow" type="Label" parent="Hint"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Your cash may be to low to succeed"
+vertical_alignment = 1
+
+[node name="AllGood" type="Label" parent="Hint"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "No problems detected"
+vertical_alignment = 1
+
+[node name="CreateButton" parent="." instance=ExtResource("4_ocgwu")]
+layout_mode = 1
+anchor_left = 0.333
+anchor_top = 1.0
+anchor_right = 0.444
+anchor_bottom = 1.0
+offset_left = 0.384003
+offset_top = -128.0
+offset_right = 0.511963
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "asd"
+disabled = true
+text = "Create"
+button_up_func = false
+change_scene = true
+metadata/_edit_lock_ = true
+
+[node name="CancelButton" parent="." instance=ExtResource("4_ocgwu")]
+layout_mode = 1
+anchor_left = 0.556
+anchor_top = 1.0
+anchor_right = 0.667
+anchor_bottom = 1.0
+offset_left = -0.512085
+offset_top = -128.0
+offset_right = -0.384033
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cancel"
+button_up_func = false
+change_scene = true
+
+[connection signal="text_changed" from="Data/Inputs/Name" to="." method="_on_name_text_changed"]
+[connection signal="value_changed" from="Data/Inputs/StarterCash" to="." method="_on_starter_cash_value_changed"]
+[connection signal="activated" from="CreateButton" to="." method="_on_create_button_activated"]
+[connection signal="activated" from="CancelButton" to="." method="_on_cancel_button_activated"]

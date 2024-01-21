@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbbutolallgpe"]
+
+[ext_resource type="Script" path="res://scripts/MenuButton.gd" id="1_0fpcg"]
+[ext_resource type="AudioStream" uid="uid://oh6210hyekg8" path="res://addons/kenney_ui_audio/mouserelease1.wav" id="2_nw27p"]
+[ext_resource type="AudioStream" uid="uid://b0rgq1w8gb725" path="res://addons/kenney_ui_audio/mouseclick1.wav" id="3_26b6b"]
+[ext_resource type="AudioStream" uid="uid://bjx5qvukwusby" path="res://addons/kenney_ui_audio/click2.wav" id="4_sntl7"]
+[ext_resource type="AudioStream" uid="uid://cx07cvhwyffaa" path="res://addons/kenney_ui_audio/rollover2.wav" id="5_8plkh"]
+
+[node name="MenuButton" type="MenuButton"]
+anchors_preset = -1
+anchor_right = 0.110889
+anchor_bottom = 0.099
+offset_right = 0.255981
+offset_bottom = -0.152008
+script = ExtResource("1_0fpcg")
+metadata/_edit_use_anchors_ = true
+
+[node name="HoverIn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nw27p")
+bus = &"UI sfx"
+
+[node name="HoverOut" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_26b6b")
+bus = &"UI sfx"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_sntl7")
+bus = &"UI sfx"
+
+[node name="Release" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8plkh")
+bus = &"UI sfx"
+
+[connection signal="button_down" from="." to="." method="_on_menu_button_button_down"]
+[connection signal="mouse_entered" from="." to="." method="_on_menu_button_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_menu_button_mouse_exited"]

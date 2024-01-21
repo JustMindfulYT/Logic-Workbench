@@ -1,0 +1,201 @@
+[gd_scene load_steps=10 format=3 uid="uid://bohcq7bf3hs3q"]
+
+[ext_resource type="Script" path="res://scenes/Workspace.gd" id="1_g1f72"]
+[ext_resource type="PackedScene" uid="uid://dbbutolallgpe" path="res://scenes/MenuButton.tscn" id="2_mx53b"]
+[ext_resource type="PackedScene" uid="uid://c0xc0xnfy78b" path="res://scenes/OptionButton.tscn" id="3_sc6xd"]
+[ext_resource type="PackedScene" uid="uid://6q71hhhis5j0" path="res://scenes/Button.tscn" id="4_36r7d"]
+[ext_resource type="PackedScene" uid="uid://wt8wjpkiyfel" path="res://scenes/VSlider.tscn" id="4_hkwh3"]
+[ext_resource type="Texture2D" uid="uid://caukodib4mf5o" path="res://assets/Play.png" id="5_6j2rk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x5bq"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.270588, 0.435294, 0.580392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f65n1"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.168627, 0.211765, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnkyl"]
+bg_color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="Root" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2x5bq")
+script = ExtResource("1_g1f72")
+
+[node name="Root" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Buttons" type="PanelContainer" parent="Root"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f65n1")
+
+[node name="Holder" type="HBoxContainer" parent="Root/Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="MenuButton" parent="Root/Buttons/Holder" instance=ExtResource("2_mx53b")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Options"
+item_count = 8
+popup/item_0/text = "Chip"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Simulate"
+popup/item_1/id = 1
+popup/item_2/text = "Save"
+popup/item_2/id = 2
+popup/item_2/disabled = true
+popup/item_3/text = "New"
+popup/item_3/id = 3
+popup/item_3/disabled = true
+popup/item_4/text = "Library"
+popup/item_4/id = 4
+popup/item_4/disabled = true
+popup/item_5/text = "Other"
+popup/item_5/id = 5
+popup/item_5/separator = true
+popup/item_6/text = "Settings"
+popup/item_6/id = 6
+popup/item_6/disabled = true
+popup/item_7/text = "Exit"
+popup/item_7/id = 7
+
+[node name="Separator" type="MarginContainer" parent="Root/Buttons/Holder"]
+layout_mode = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VSeparator" type="VSeparator" parent="Root/Buttons/Holder/Separator"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="GroupButton" parent="Root/Buttons/Holder" instance=ExtResource("3_sc6xd")]
+layout_mode = 2
+disabled = true
+item_count = 2
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "General"
+popup/item_0/id = 0
+popup/item_1/text = "Hardware"
+popup/item_1/id = 1
+
+[node name="Spacer" type="MarginContainer" parent="Root/Buttons/Holder"]
+layout_mode = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VSeparator" type="VSeparator" parent="Root/Buttons/Holder/Spacer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Input" parent="Root/Buttons/Holder" instance=ExtResource("4_36r7d")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Input"
+
+[node name="Output" parent="Root/Buttons/Holder" instance=ExtResource("4_36r7d")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Output"
+
+[node name="NOT" parent="Root/Buttons/Holder" instance=ExtResource("4_36r7d")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "NOT"
+
+[node name="AND" parent="Root/Buttons/Holder" instance=ExtResource("4_36r7d")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "AND"
+
+[node name="NAND" parent="Root/Buttons/Holder" instance=ExtResource("4_36r7d")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "NAND"
+
+[node name="Workspace" type="GraphEdit" parent="Root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_hnkyl")
+scroll_offset = Vector2(0, -8)
+right_disconnects = true
+zoom_min = 0.1
+zoom_max = 2.5
+zoom_step = 0.2
+minimap_enabled = false
+show_zoom_label = true
+show_arrange_button = false
+
+[node name="SimulationPopup" type="Window" parent="Root"]
+gui_embed_subwindows = true
+title = "Circuit Simulation Control"
+position = Vector2i(21, 132)
+size = Vector2i(295, 50)
+visible = false
+unresizable = true
+popup_window = true
+extend_to_title = true
+keep_title_visible = true
+
+[node name="Container" type="HBoxContainer" parent="Root/SimulationPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 291.0
+offset_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="SimulateCheckButton" type="CheckButton" parent="Root/SimulationPopup/Container"]
+layout_mode = 2
+text = "Simulate"
+
+[node name="SpeedSlider" parent="Root/SimulationPopup/Container" instance=ExtResource("4_hkwh3")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+tooltip_text = "Simulation Speed
+Value : 5"
+max_value = 5.0
+value = 5.0
+
+[node name="StepButton" type="Button" parent="Root/SimulationPopup/Container"]
+layout_mode = 2
+tooltip_text = "Simulation Step"
+icon = ExtResource("5_6j2rk")
+
+[node name="SimulateDelayTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="activated" from="Root/Buttons/Holder/MenuButton" to="." method="_on_menu_button_activated"]
+[connection signal="activated" from="Root/Buttons/Holder/GroupButton" to="." method="_on_group_button_activated"]
+[connection signal="activated" from="Root/Buttons/Holder/Input" to="." method="_on_input_activated"]
+[connection signal="activated" from="Root/Buttons/Holder/Output" to="." method="_on_output_activated"]
+[connection signal="activated" from="Root/Buttons/Holder/NOT" to="." method="_on_not_activated"]
+[connection signal="activated" from="Root/Buttons/Holder/AND" to="." method="_on_and_activated"]
+[connection signal="activated" from="Root/Buttons/Holder/NAND" to="." method="_on_nand_activated"]
+[connection signal="connection_request" from="Root/Workspace" to="." method="_on_workspace_connection_request"]
+[connection signal="delete_nodes_request" from="Root/Workspace" to="." method="_on_workspace_delete_nodes_request"]
+[connection signal="disconnection_request" from="Root/Workspace" to="." method="_on_workspace_disconnection_request"]
+[connection signal="close_requested" from="Root/SimulationPopup" to="." method="_on_simulation_popup_close_requested"]
+[connection signal="mouse_entered" from="Root/SimulationPopup" to="." method="_on_simulation_popup_mouse_entered"]
+[connection signal="mouse_exited" from="Root/SimulationPopup" to="." method="_on_simulation_popup_mouse_exited"]
+[connection signal="toggled" from="Root/SimulationPopup/Container/SimulateCheckButton" to="." method="_on_simulate_check_button_toggled"]
+[connection signal="activated" from="Root/SimulationPopup/Container/SpeedSlider" to="." method="_on_speed_slider_activated"]
+[connection signal="button_down" from="Root/SimulationPopup/Container/StepButton" to="." method="_on_step_button_button_down"]
+[connection signal="timeout" from="SimulateDelayTimer" to="." method="_on_simulate_delay_timer_timeout"]

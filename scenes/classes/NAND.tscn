@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://drhiqt00u6lc0"]
+
+[ext_resource type="Script" path="res://scripts/classes/NAND.gd" id="1_rq07l"]
+[ext_resource type="Script" path="res://scripts/classes/slot.gd" id="2_0sps6"]
+
+[node name="Nand" type="GraphNode"]
+custom_minimum_size = Vector2(128, 72)
+offset_right = 128.0
+offset_bottom = 72.0
+theme_override_constants/separation = 15
+theme_override_constants/port_h_offset = 0
+title = "NAND"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_rq07l")
+
+[node name="Slot" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("2_0sps6")
+id = 0
+input_enabled = true
+output_enabled = true
+
+[node name="Slot_2" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("2_0sps6")
+id = 1
+input_enabled = true

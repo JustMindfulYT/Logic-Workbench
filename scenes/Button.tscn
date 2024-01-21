@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://6q71hhhis5j0"]
+
+[ext_resource type="Script" path="res://scripts/Button.gd" id="1_jfedr"]
+[ext_resource type="AudioStream" uid="uid://b0rgq1w8gb725" path="res://addons/kenney_ui_audio/mouseclick1.wav" id="2_8o5xu"]
+[ext_resource type="AudioStream" uid="uid://oh6210hyekg8" path="res://addons/kenney_ui_audio/mouserelease1.wav" id="3_a0nyg"]
+[ext_resource type="AudioStream" uid="uid://bjx5qvukwusby" path="res://addons/kenney_ui_audio/click2.wav" id="4_0gy1t"]
+[ext_resource type="AudioStream" uid="uid://cx07cvhwyffaa" path="res://addons/kenney_ui_audio/rollover2.wav" id="5_axxoy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrsk3"]
+bg_color = Color(0.129412, 0.14902, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.211765, 0.239216, 0.290196, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mh4qs"]
+bg_color = Color(0.18, 0.206833, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2628, 0.29682, 0.36, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20lym"]
+bg_color = Color(0.2304, 0.264747, 0.32, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3139, 0.35647, 0.43, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x5g4"]
+bg_color = Color(0.11, 0.11, 0.11, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.22, 0.22, 0.22, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80wgd"]
+
+[node name="Button" type="Button"]
+anchors_preset = -1
+anchor_right = 0.111
+anchor_bottom = 0.099
+offset_right = 0.127991
+offset_bottom = -0.152008
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_yrsk3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mh4qs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_20lym")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2x5g4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_80wgd")
+script = ExtResource("1_jfedr")
+metadata/_edit_use_anchors_ = true
+
+[node name="HoverIn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a0nyg")
+bus = &"UI sfx"
+
+[node name="HoverOut" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_8o5xu")
+bus = &"UI sfx"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0gy1t")
+bus = &"UI sfx"
+
+[node name="Release" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_axxoy")
+bus = &"UI sfx"
+
+[node name="MinTimer" type="Timer" parent="."]
+
+[node name="MaxTimer" type="Timer" parent="."]
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="MinTimer" to="." method="_on_min_timer_timeout"]
+[connection signal="timeout" from="MaxTimer" to="." method="_on_max_timer_timeout"]

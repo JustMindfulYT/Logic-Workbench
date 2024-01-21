@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg8j7fuw6mamg"]
+
+[ext_resource type="Script" path="res://scripts/classes/AND.gd" id="1_53tjg"]
+[ext_resource type="Script" path="res://scripts/classes/slot.gd" id="2_t261o"]
+
+[node name="And" type="GraphNode"]
+custom_minimum_size = Vector2(128, 70)
+offset_right = 43.0
+offset_bottom = 70.0
+theme_override_constants/separation = 15
+theme_override_constants/port_h_offset = 0
+title = "AND"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_53tjg")
+
+[node name="Slot" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("2_t261o")
+id = 0
+input_enabled = true
+output_enabled = true
+
+[node name="Slot_2" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("2_t261o")
+id = 1
+input_enabled = true

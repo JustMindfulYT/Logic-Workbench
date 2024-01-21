@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://h1f14t7nmn5e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plykv"]
+bg_color = Color(0.129412, 0.14902, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.211765, 0.239216, 0.290196, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Label" type="Label"]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = -1
+anchor_right = 0.0868056
+anchor_bottom = 0.0354938
+offset_right = -100.0
+offset_bottom = -23.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_plykv")
+metadata/_edit_use_anchors_ = true
