@@ -79,7 +79,7 @@ grow_horizontal = 2
 [node name="Title" type="Label" parent="TopContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Digital Logic Simulator 2"
+text = "Logic Workbench"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true

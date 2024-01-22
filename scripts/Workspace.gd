@@ -49,14 +49,15 @@ func _on_workspace_delete_nodes_request(nodes):
 	var connections = $Root/Workspace.get_connection_list()
 	for node in nodes:
 		for connection in connections:
-			if connection["from_node"] == node.name:
+			if connection["from_node"] == node:
 				disconnect_connection(connection)
-			if connection["to_node"] == node.name:
+			if connection["to_node"] == node:
 				disconnect_connection(connection)
-		node.queue_free()
+		var child = Global.search_array($Root/Workspace.get_children(),node)
+		child.queue_free()
 
 func disconnect_connection(c : Dictionary):
-	$Root/Workspace.disconnect_node(c["from"],c["from_port"],c["to"],c["to_port"])
+	$Root/Workspace.disconnect_node(c["from_node"],c["from_port"],c["to_node"],c["to_port"])
 
 
 func _on_simulate_check_button_toggled(s : bool):

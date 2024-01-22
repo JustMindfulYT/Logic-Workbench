@@ -7,6 +7,7 @@
 custom_minimum_size = Vector2(144, 128)
 offset_right = 144.0
 offset_bottom = 128.0
+title = "Input"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)

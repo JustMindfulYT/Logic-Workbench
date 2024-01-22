@@ -1,12 +1,15 @@
 extends Control
 class_name Slot
 
+
 @export_category("Slot")
 @export var id : int = -1
 @export var input_enabled : bool = false
 @export var input_state : bool = false
 @export var output_enabled : bool = false
 @export var output_state : bool = false
+@export var color_on : Color = Color.RED
+@export var color_off : Color = Color.BLUE
 
 
 func get_pin_state(output : bool):
