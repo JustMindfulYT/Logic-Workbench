@@ -53,6 +53,7 @@ func _on_workspace_delete_nodes_request(nodes):
 				disconnect_connection(connection)
 			if connection["to_node"] == node.name:
 				disconnect_connection(connection)
+		node.queue_free()
 
 func disconnect_connection(c : Dictionary):
 	$Root/Workspace.disconnect_node(c["from"],c["from_port"],c["to"],c["to_port"])
