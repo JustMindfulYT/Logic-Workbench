@@ -49,7 +49,7 @@ naming/default_signal_callback_to_self_name="_on_{node_name}_{signal_name}"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ReorderableContainer/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/save_system/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/ReorderableContainer/plugin.cfg", "res://addons/copper_dc/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/inspector_extender/plugin.cfg", "res://addons/logger/plugin.cfg", "res://addons/save_system/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [input]
 
@@ -76,6 +76,11 @@ chip_library={
 chip_menu={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"command_or_control_autoremap":true,"alt_pressed":false,"shift_pressed":false,"pressed":false,"keycode":77,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+open_debug={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194340,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 
